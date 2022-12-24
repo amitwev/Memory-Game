@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../Components/Button/Button'
 import styles from '../styles/Memory-game.module.css';
-const clearBoard = () => {
-    console.log('clear button clicked');
-}
-
-const startGame = () => {
-    console.log('Start game btn');
-}
+import { debug } from 'console';
 
 const board = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
 
@@ -15,6 +9,20 @@ const MemoryGame = () => {
     const [result, setResult] = useState(0);
     const [cardOne, setCardOne] = useState<{ target: HTMLInputElement | null, value: number }>({ target: null, value: -1 });
     const [cardTwo, setCardTwo] = useState<{ target: HTMLInputElement | null, value: number }>({ target: null, value: -1 });
+    const [moves, setMoves] = useState(0);
+
+    const resetBoard = () => {
+        setMoves(0);
+        setResult(0);
+        // setDefaultValues(cardOne, cardTwo);
+        document.querySelectorAll('.game-card-visible').forEach(elm => {
+            setHiddenCard((elm as HTMLInputElement));
+        })
+    }
+
+    const startGame = () => {
+        console.log('Start game btn');
+    }    
 
     const setVisibleCard = (card: HTMLInputElement | null) => {
         card ? card.classList.add('game-card-visible') : null;
@@ -53,6 +61,7 @@ const MemoryGame = () => {
 
     const checkCardsValue = (target: HTMLInputElement) => {
         if (cardOne.value !== -1) {
+            setMoves(moves + 1);
             if (cardOne.value === +target.value) {
                 return foundCards(target);
             }
@@ -69,13 +78,11 @@ const MemoryGame = () => {
 
     return (
         <main>
-            {/* <div className='heart'></div> */}
             <h1 className={styles.header}>Memory game</h1>
             <div className={styles["game-board"]}>
                 {
                     board.map((item, i) => {
-                        return (<Button value={item.toString()} text={item.toString()} classes={styles['game-card-hidden']} clicked={(event: PointerEvent) => cardClicked(event)} key={i} />)
-
+                        return (<Button value={item.toString()} text={item.toString()} classes={` ${styles['game-card']} ${styles['game-card-hidden']}`} clicked={(event: PointerEvent) => cardClicked(event)} key={i} />)
                     })
                 }
             </div>
@@ -83,8 +90,12 @@ const MemoryGame = () => {
                 <span className='label'>Result: </span>
                 <span id={'score'} className='score'>{result}</span>
             </div>
+            <div className={styles.moves}>
+                <span>Moves: </span>
+                <span>{moves}</span>
+            </div>
             <div className={styles.cta}>
-                <Button text={"Clear"} id={'clear'} classes={'btn clear-btn'} clicked={clearBoard} attributes={[{ key: 'attributeKey', value: 'attributeValue' }]} />
+                <Button text={"Reset"} id={'reset'} classes={'btn clear-btn'} clicked={resetBoard} attributes={[{ key: 'attributeKey', value: 'attributeValue' }]} />
                 <Button text={"Start"} id={'start'} classes={'btn start-btn'} clicked={startGame} />
             </div>
         </main>

@@ -13,35 +13,27 @@
     justify-items: center;
 }
 
+.game-card{
+    transition: var(--transition);
+}
+
 .game-card-hidden {
     width: 70px;
     height: 100px;
-    border: 1px solid var(--color-black);
-    background: transparent;
+    border: 10px solid var(--color-secondary);
     color: transparent;
-    border-radius: 10px;
-    border-radius: 10px;
+    border-radius: 1rem;
     background: var(--background-back-card);
     position: relative;
 }
 
-.game-card-hidden::after {
-    content: "";
-    background: white;
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    transform: rotate(45deg);
-}
-
 .game-card:hover {
     background: var(--color-main);
-    color: var(--color-white);
+    color: transparent;
 }
 
-.result {
+.result,
+.moves {
     text-align: center;
     margin: 1rem 0;
     font-size: 2rem;

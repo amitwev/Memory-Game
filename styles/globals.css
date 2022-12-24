@@ -1,9 +1,15 @@
 :root {
-    --color-main: rgb(67, 67, 177);
-    --color-secondary: rgb(36, 111, 111);
+    --color-main: hsl(158, 36%, 37%);
+    --color-secondary: hsl(30, 38%, 92%);
+
+    --color-neutral-900: hsl(212, 21%, 14%); 
+    --color-neutral-400: hsl(228, 12%, 48%);
+    --color-neutral-100: hsl(0, 0%, 100%) ;
+
     --color-white: #ffffff;
     --color-black: #000000;
-    --background-back-card: #da0000;
+    --background-back-card: hsl(130deg 59% 28%);
+    --transition: transform  500ms;
 }
 
 * {
@@ -20,6 +26,8 @@
 body {
     font-size: 12px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: var(--color-main);
+    color: var(--color-secondary);
 }
 
 button {
@@ -31,19 +39,21 @@ button {
 .btn {
     width: 100%;
     max-width: 250px;
-    border: 1px solid var(--color-main);
+    border: 1px solid var(--color-secondary);
     height: 40px;
     font-size: 1rem;
     background: transparent;
+    color: var(--color-secondary);
 }
 
 .btn:hover {
-    background: var(--color-main);
+    background: var(--color-secondary);
     border-color: transparent;
-    color: var(--color-white);
+    color: var(--color-neutral-900);
 }
 
 .game-card-visible {
     pointer-events: none;
+    animation: openCard 2s ease-in;
     color: var(--color-white)!important;
 }
