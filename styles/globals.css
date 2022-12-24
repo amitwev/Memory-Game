@@ -1,26 +1,49 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+:root {
+    --color-main: rgb(67, 67, 177);
+    --color-secondary: rgb(36, 111, 111);
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --background-back-card: #da0000;
 }
 
 * {
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+* {
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-size: 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn {
+    width: 100%;
+    max-width: 250px;
+    border: 1px solid var(--color-main);
+    height: 40px;
+    font-size: 1rem;
+    background: transparent;
+}
+
+.btn:hover {
+    background: var(--color-main);
+    border-color: transparent;
+    color: var(--color-white);
+}
+
+.game-card-visible {
+    pointer-events: none;
+    color: var(--color-white)!important;
 }
